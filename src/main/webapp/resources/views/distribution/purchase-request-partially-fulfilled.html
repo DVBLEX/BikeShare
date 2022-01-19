@@ -1,0 +1,58 @@
+<div class=""
+	data-ng-repeat="(group, orderedProducts) in order.productsGroups"
+	data-ng-show="orderedProducts.length > 0">
+	<div class="row bg-light" class="border-bottom">
+		<div class="col-12 text-center pt-1">
+			<h6>{{group}}</h6>
+		</div>
+	</div>
+	<div class="row py-1 border-bottom h6">
+		<div class="col-6 col-md-6">Asset</div>
+		<div class="col-3 col-md-3">
+			<span class="d-none d-md-block">Requested</span>
+			<span class="d-block d-md-none">Req.</span>
+		</div>
+		<div class="col-3 col-md-3">
+			<span class="d-none d-md-block">Confirmed</span>
+			<span class="d-block d-md-none">Conf.</span>
+		</div>
+	</div>
+	<div class="row py-1 border-bottom"
+		data-ng-repeat="orderedProduct in orderedProducts">
+		<div class="col-6 col-md-6">
+			{{orderedProduct.product.type.groupName + " " +
+			(orderedProduct.product.productId.productName ?
+			orderedProduct.product.productId.productName : '')}}
+		</div>
+		<div class="col-3 col-md-3">
+			{{orderedProduct.amount}}
+		</div>
+		<div class="col-3 col-md-3">
+			<input type="number" class="form-control form-control-sm" style="max-width: 90px;" min="{{orderedProduct.prevAmount}}" data-ng-model="orderedProduct.confirmed" data-ng-class="{'is-invalid' : !isConfirmedValid(orderedProduct.confirmed) }">
+		</div>
+	</div>
+</div>
+
+<!--comment input-->
+<div class="row" style="margin: 15px 0px 15px 0px">
+	<input class="form-control form-control-sm col-md-12 col-lg-12" readonly placeholder="comment" data-ng-model="order.comment">
+</div>
+
+<div class="row mt-1" data-ng-repeat="cred in order.creds">
+	<div class="col-5">Invoice No: <input class="form-control form-control-sm" data-ng-model="cred.invoice" data-ng-disabled="$index + 1 < order.creds.length" data-ng-class="{'is-invalid' : !isInvoiceValid(cred.invoice) }"></div>
+	<div class="col-7">Notes: <input class="form-control form-control-sm" data-ng-model="cred.notes" data-ng-disabled="$index + 1 < order.creds.length"></div>
+</div>
+
+<div class="d-flex justify-content-between mt-2">
+	<button class="btn btn-primary btn-sm"
+			data-ng-disabled="replenishing" 
+			data-ng-click="openReplenishModal(order)"
+			data-ng-disabled="!productsBySuppliers">
+			Replenish</button>
+	
+	<button class="btn btn-info btn-sm"
+		data-ng-disabled="sendingOrder" data-ng-click="previewOrderPDF(order)">
+		Preview</button>
+</div>
+
+

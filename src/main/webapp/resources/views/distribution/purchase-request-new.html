@@ -1,0 +1,75 @@
+<div class=""
+	data-ng-repeat="(group, orderedProducts) in order.productsGroups"
+	data-ng-show="orderedProducts.length > 0">
+	<div class="row bg-light" class="border-bottom">
+		<div class="col-12 text-center pt-1">
+			<h6>{{group}}</h6>
+		</div>
+	</div>
+	<div class="row py-1 border-bottom h6">
+		<div class="col-6 col-md-7">Asset</div>
+		<div class="col-4 col-md-4">
+			<span class="d-none d-md-block">Amount</span><span
+				class="d-block d-md-none">Amt.</span>
+		</div>
+	</div>
+	<div class="row py-1 border-bottom"
+		data-ng-repeat="orderedProduct in orderedProducts"
+		data-ng-show="orderedProduct.amount >= 0">
+		<div class="col-6 col-md-7">
+			<div class="d-flex align-items-center">
+				<div>
+					<button data-ng-click="openRemoveProductModal(orderedProduct, order)"
+							data-ng-disabled="removingProduct"
+							class="mr-2 btn btn-danger close-btn d-flex align-items-center justify-content-center">
+						<i class="material-icons md-14 text-white">clear</i>
+					</button>
+				</div>
+				<div>
+					{{orderedProduct.product.type.groupName + " " +
+					(orderedProduct.product.productId.productName ?
+					orderedProduct.product.productId.productName : '')}}
+				</div>
+			</div>
+		</div>
+		<div class="col-4 col-md-4">
+			<button type="button" class="btn btn-info btn-sm"
+				style="height: 25px; padding: 3px 8px;"
+				data-ng-show="order.state.id === 11"
+				data-ng-click="openEditOrderedProduct(orderedProduct, order)">
+				<em class="material-icons md-18">edit</em>
+			</button>
+			{{orderedProduct.amount}}
+			<span class="text-danger" data-ng-show="orderedProduct.amount < orderedProduct.product.minOrder">Minimal order: {{orderedProduct.product.minOrder}}</span>
+		</div>
+
+	</div>
+</div>
+
+<!--comment input-->
+<div class="row" style="margin: 15px 0px 15px 0px">
+	<input class="form-control form-control-sm col-md-12 col-lg-12" placeholder="comment" data-ng-model="order.comment">
+</div>
+
+<div class="d-flex justify-content-between">
+	<button class="btn btn-success btn-sm"
+		style="line-height: 15px;"
+		data-ng-disabled="!productsBySuppliers || sendingOrder"
+		data-ng-click="openAddItemModal(order)">Add Item</button>
+	<div class="msc-inline-block">
+		<button class="btn btn-info btn-sm mr-1"
+			style="line-height: 18px;"
+			data-ng-disabled="sendingOrder"
+			data-ng-click="previewOrderPDF(order)">
+			Preview
+		</button>
+		<button class="btn btn-warning btn-sm"
+			style="line-height: 18px; color: #FFFFFF"
+			data-ng-click="openSendModal(order)"
+			data-ng-disabled="sendingOrder">
+			<span>Send</span> <em class="material-icons md-18 float-right ml-1"
+				style="color: #FFFFFF">send</em>
+		</button>
+	</div>
+	
+</div>

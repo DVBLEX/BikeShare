@@ -1,0 +1,176 @@
+@charset "UTF-8";
+
+html, body {
+    height: 100%;
+}
+
+@media screen and (min-width: 1001px){	
+	body {
+		background-image: url(/msc/resources/styles/images/bike.jpg);
+		background-size: 130%;
+		/* background-size: contain; */
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center; 
+	}
+}
+
+@media screen and (max-width: 1000px){	
+	body {
+		background-image: url(/msc/resources/styles/images/bike.jpg);
+		background-size: 200%;
+		/* background-size: contain; */
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center; 
+	}
+}
+
+@media screen and (max-width: 600px){	
+	body {
+		background-image: url(/msc/resources/styles/images/bike.jpg);
+		background-size: 340%;
+		/* background-size: contain; */
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-position: center; 
+	}
+}
+
+.new-spare-part-wrapper{
+	background: rgb(236, 238, 236);
+	border-radius: 5px;
+	padding: 6px 10px;
+}
+
+.close-btn {
+	padding: 1px 4px;
+}
+
+.right-distance-20px {
+	right: 20px;
+}
+
+.msc-align-bottom{
+	position: absolute;
+	bottom: 0;
+}
+
+.msc-full-height{
+	height: 100%;
+	min-height: 100%;
+}
+
+.msc-text-invalid{
+	color: #dc3545 !important;
+}
+
+.msc-round{
+	width: 12px;
+	height: 12px;
+	line-height: 12px;
+	display: inline-block;
+	border-radius: 50%;
+}
+
+.msc-line{
+	height: 0px;
+	width:100%;
+	display: block;
+	border: 1px solid #dee2e6 !important;
+}
+
+.msc-round.bigger{
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+}
+
+.msc-round.bigger-17{
+	width: 17px;
+	height: 17px;
+	line-height: 17px;
+}
+
+
+.msc-round.bigger-18{
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+}
+
+.msc-triangle-up{
+	width: 0; 
+	height: 0; 
+	line-height: 14px;
+	border-left: 10px solid transparent !important;
+	border-right: 10px solid transparent !important;
+	border-bottom: 14px solid;
+	border-radius: 10%;
+	display: inline-block;
+}
+
+.msc-triangle-up.bigger{
+	line-height: 19px;
+	border-left: 14px solid transparent !important;
+	border-right: 14px solid transparent !important;
+	border-bottom: 19px solid;
+}
+
+.msc-inline-block{
+	display: inline-block;
+}
+
+.msc-border-box{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+
+.material-icons.md-14 { font-size: 14px; }
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.msc-warning-border{
+	border-color: #ffc107 !important;
+}
+.msc-warning-background{
+	background-color: #ffc107;
+}
+
+.msc-max-width-1{
+	max-width:200px;
+}
+
+.msc-daterange-width{
+	max-width: 220px;
+}
+
+.msc-label{
+	white-space: nowrap;
+}
+
+
+.padding-x-5px {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.size-spinner {
+	width: 80px;
+	height: 80px;
+}
+
+
+
+/* This CSS is to not apply the border for the column having 'no-border' class */
+.no-border.ag-cell:focus{
+  border:none !important;
+  outline: none;
+}
+
+.ag-root{
+	font-size: 14px !important;
+}

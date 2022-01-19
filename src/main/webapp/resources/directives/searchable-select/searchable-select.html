@@ -1,0 +1,16 @@
+<div id="{{name}}" style="display: inline-block; position: relative; width:100%">
+	<input id="{{name + '-input'}}"
+		   class="form-control"
+		   data-ng-class="{'is-invalid': !callIsValid(), 'form-control-sm': !!small}"
+		   data-ng-model="searchString"
+		   data-ng-change="changeInput()"
+		   data-ng-disabled="callIsDisabled()"
+		   autocomplete="off"
+	>
+	<div id="{{name + '-dropdown'}}"
+		 data-ng-show="showDropdown"
+		 class="dropdown-menu"
+		 style="position: absolute; width:100%; height:auto; max-height:300px; overflow-x: hidden; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change:transform; display:block;">
+		<a class="dropdown-item" href="" data-ng-repeat="item in myArrayFiltered" data-ng-click="chooseRow(item)">{{getArrayValue($index)}}</a>
+	</div>
+</div>

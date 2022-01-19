@@ -1,0 +1,21 @@
+<div class="modal fade" id="{{modalId}}" tabindex="-1" role="dialog"
+	aria-labelledby="{{modalId + 'Title'}}" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="{{modalId + 'LongTitle'}}">{{constructTitle()}}</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" data-ng-click="onHide()">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body" data-ng-show="text && text.length > 0">{{text}}</div>
+			<div class="modal-footer d-flex justify-content-center">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal" style="min-width: 80px"
+					data-ng-click="onHide()" data-ng-hide="hideCancel">Cancel</button>
+				<button type="button" class="btn btn-primary" style="min-width: 80px"
+					data-ng-click="onConfirm()" data-dismiss="modal">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>

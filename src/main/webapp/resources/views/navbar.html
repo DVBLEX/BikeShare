@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between" data-ng-controller="headerCtrl">
+	<a style="z-index: 10" class="navbar-brand d-none d-lg-inline-block" href="/msc/views/home">M&S Control</a>
+
+	<span style="z-index: 10" class="navbar-brand mx-auto" data-ng-show="isPasswordRecoveryPage()" data-ng-cloak>
+	   	{{getPageTitle()}}
+	</span>
+
+	<div style="z-index: 10" class="navbar-collapse d-flex justify-content-between" id="navbarSupportedContent" data-ng-if="!isPasswordRecoveryPage()" data-ng-cloak>
+		<ul class="navbar-nav" data-ng-show="!isPasswordRecoveryPage()">
+			<li class="nav-item dropdown d-inline-block">
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          MENU
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="/msc/views/assets-edit" data-ng-if="isPagePermitted('assets-edit')">Assets Profiles</a>
+					<a class="dropdown-item" href="/msc/views/create-repair-report" data-ng-if="isPagePermitted('create-repair-report')">Create Repair Report</a>
+					<a class="dropdown-item" href="/msc/views/routine-review" data-ng-if="isPagePermitted('routine-review')">Create Routine Review</a>
+					<a class="dropdown-item" href="/msc/views/distribution" data-ng-if="isPagePermitted('distribution')">Distributions</a>
+					<a class="dropdown-item" href="/msc/views/purchase-orders" data-ng-if="isPagePermitted('purchase-orders')">Purchase Orders</a>
+					<a class="dropdown-item" href="/msc/views/repair-reports" data-ng-if="isPagePermitted('repair-reports')">Repair Reports</a>
+					<a class="dropdown-item" href="/msc/views/scheme-stock-control" data-ng-if="isPagePermitted('scheme-stock-control')">Scheme Stock Control</a>
+					<a class="dropdown-item" href="/msc/views/stock-balance" data-ng-if="isPagePermitted('stock-balance')">Stock Balance</a>
+					<a class="dropdown-item" href="/msc/views/stock-requests" data-ng-if="isPagePermitted('stock-requests')">Stock Requests</a>
+					<a class="dropdown-item" href="/msc/views/suppliers" data-ng-if="isPagePermitted('suppliers')">Suppliers</a>
+					<div class="dropdown-divider" data-ng-if="isPagePermitted('logs')"></div>
+					<a class="dropdown-item" href="/msc/views/edit-tables-data" data-ng-if="isPagePermitted('edit-tables-data')">System Setup</a>
+					<a class="dropdown-item" href="/msc/views/users" data-ng-if="isPagePermitted('users')">User Management</a>
+					<a class="dropdown-item" href="/msc/views/logs" data-ng-if="isPagePermitted('logs')">Logs</a>
+					<a class="dropdown-item" href="/msc/views/reports" data-ng-if="isPagePermitted('reports')">Reports</a>
+					<div class="dropdown-divider d-block d-lg-none"></div> <!-- for phones -->
+					<a class="dropdown-item d-block d-lg-none"  href="/msc/logout">Log Out</a>
+					<a class="dropdown-item d-block d-lg-none"  href="#" data-ng-click="askToDropPassword()" data-ng-disabled="droppingPass">Forgot password?</a>
+		        </div>
+		     </li>
+		</ul>
+
+		<span class="navbar-brand d-block d-lg-none" style="position: absolute; top: 7px; right: 0;" data-ng-cloak>
+		   {{getPageTitle()}}
+		</span>
+
+	    <ul class="navbar-nav d-none d-lg-inline-block">
+			<li class="nav-item active dropdown" data-ng-if="!isPasswordRecoveryPage()" data-ng-cloak>
+				<a class="nav-link dropdown-toggle px-0" style="color: #fff" href="#" id="navbarDropdownUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    	{{currentUser.firstName + ' ' + currentUser.lastName}}
+			    </a>
+			    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
+			    	<li>
+			    		<a class="dropdown-item"  href="/msc/logout">Log Out</a>
+			    	</li>
+			    	<li>
+			    		<a class="dropdown-item"  href="#" data-ng-click="askToDropPassword()" data-ng-disabled="droppingPass">Forgot password?</a>
+			    	</li>
+			   </ul>
+			</li>
+		</ul>
+	</div>
+
+	<div style="z-index: 1; left: 0" class="d-flex justify-content-center w-100 position-absolute">
+		<span id="titleForBigPage" class="navbar-brand d-none m-0" data-ng-class="{'d-lg-inline-block': true}" data-ng-cloak><!-- class d-lg-inline-block we are adding in code-->
+			{{getPageTitle()}}
+	    </span>
+	</div>
+
+	<confirm-modal data-modal-id="'dropPasswordModal'"
+			data-on-confirm="dropPassword" data-title="'Password Reset'"
+			data-text="'Do you want to reset your password? Recovery link will be sent to your email.'"
+			></confirm-modal>
+</nav>

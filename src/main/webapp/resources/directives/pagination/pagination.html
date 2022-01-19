@@ -1,0 +1,19 @@
+<nav>
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous" data-ng-click="setCurrentPageNumber(parameters.currentPage - 1)" data-ng-disabled="parameters.currentPage === 1">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item" data-ng-class="{'active': ($index + 1) === parameters.currentPage}" data-ng-repeat="x in parameters.pagesNumber | range" data-ng-show="shouldPageBeShown($index + 1)">
+    	<a class="page-link" href="#" data-ng-click="setCurrentPageNumber($index + 1)">{{$index + 1}}</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next" data-ng-click="setCurrentPageNumber(parameters.currentPage + 1)" data-ng-disabled="parameters.currentPage === parameters.pagesNumber">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
